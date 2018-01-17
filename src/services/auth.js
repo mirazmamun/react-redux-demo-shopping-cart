@@ -2,8 +2,8 @@ import auth0 from 'auth0-js';
 
 export default class Auth {
   auth0 = new auth0.WebAuth({
-    domain: 'chris92.auth0.com',
-    clientID: 'xL6iuhjJHWp5S2iVZADxyRkAKkEMqSI5',
+    domain: '[domain]',
+    clientID: '[clientID]',
     redirectUri: 'http://localhost:3000/callback',
     audience: 'https://chris92.auth0.com/userinfo',
     responseType: 'token id_token',
