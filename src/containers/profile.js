@@ -7,7 +7,6 @@ const auth = new Auth();
 const Profile = props => (
   <div>
     <Hero page="Profile"></Hero>
-    <h2 className="title">Nickname: {auth.getProfile().nickname}</h2>
   </div>
 );
 

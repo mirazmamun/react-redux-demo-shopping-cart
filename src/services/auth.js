@@ -2,10 +2,10 @@ import auth0 from 'auth0-js';
 
 export default class Auth {
   auth0 = new auth0.WebAuth({
-    domain: '[domain]',
-    clientID: '[clientID]',
-    redirectUri: 'http://localhost:3000/callback',
-    audience: 'https://chris92.auth0.com/userinfo',
+    domain: 'codarrior.au.auth0.com',
+    clientID: 'DzPcwwDO3dncPNK02XptKCZdD4fX4Jwe',
+    redirectUri: process.env.AUTH0_REDIRECT_URL || 'http://localhost:3000/callback',
+    audience: 'https://codarrior.mirazalmamun.xyz/auth',
     responseType: 'token id_token',
     scope: 'openid profile email'
   });
@@ -18,8 +18,6 @@ export default class Auth {
   }
 
   handleAuthentication(cb) {
-    // const hash = process.browser ? window.location.hash : context.asPath;
-
     this.auth0.parseHash({ hash: window.location.hash }, (err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
         this.auth0.client.userInfo(authResult.accessToken, (err, profile) => {
@@ -44,11 +42,6 @@ export default class Auth {
     localStorage.setItem('scotch_auth_profile', JSON.stringify(profile));
   }
 
-  storeGraphCoolCred(authResult) {
-    localStorage.setItem('scotch_auth_gcool_token', authResult.token);
-    localStorage.setItem('scotch_auth_gcool_id', authResult.id);
-  }
-
   login() {
     this.auth0.authorize();
   }
@@ -59,8 +52,6 @@ export default class Auth {
     localStorage.removeItem('scotch_auth_id_token');
     localStorage.removeItem('scotch_auth_expires_at');
     localStorage.removeItem('scotch_auth_profile');
-    localStorage.removeItem('scotch_auth_gcool_token');
-    localStorage.removeItem('scotch_auth_gcool_id');
     // navigate to the home route
     history.replace('/');
   }

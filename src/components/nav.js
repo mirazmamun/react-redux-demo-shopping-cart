@@ -10,7 +10,7 @@ const Nav = () => {
     <nav className="navbar">
       <div className="navbar-brand">
         <Link className="navbar-item" to="/">
-          <strong>Scotch Auth</strong>
+          <strong>FunCo</strong>
         </Link>
       </div>
       <div className="navbar-menu">
@@ -37,7 +37,7 @@ const Nav = () => {
                 auth.login();
               }}
             >
-              Join
+              Admin
             </div>
           )}
         </div>

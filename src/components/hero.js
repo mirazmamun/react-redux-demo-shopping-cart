@@ -2,15 +2,17 @@ import React from 'react';
 import Nav from './nav'
 import './hero.css'
 
-const Hero = ({page}) => (
-  <section className="hero is-large is-dark">
-    <div className="hero-body">
+const Hero = ({page, children}) => (
+  <section className="hero is-primary is-bold is-fullheight">
+    <div className="hero-title">
     <Nav></Nav>
+    </div>
+    <div className="hero-body">
       <div className="container">
-        <h1 className="title">Scotch Auth</h1>
-        <h2 className="subtitle">Welcome to the Scotch Auth {page}</h2>
+        {children}
       </div>
     </div>
+    <div className="hero-footer"></div>
   </section>
 );
 
